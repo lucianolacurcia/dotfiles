@@ -1,0 +1,20 @@
+extends c
+
+snippet class "class" b
+class ${1:className} {
+  ${2:${VISUAL:attributes}}
+};
+$0
+endsnippet
+
+
+snippet priv "private" b
+private:
+  ${1:atributeOrOperation}
+$0
+endsnippet
+
+snippet pub "public" b
+public:
+  ${1:atributeOrOperation}
+endsnippet

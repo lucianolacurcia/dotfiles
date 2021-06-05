@@ -1,0 +1,103 @@
+snippet /^#!$/ "shebang" rbA
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+$0
+endsnippet
+
+snippet if "If" b
+if ${1:condition}:
+	${2:${VISUAL:pass}}
+$0
+endsnippet
+
+snippet ife "If-Else" b
+if ${1:condition}:
+	${2:${VISUAL:pass}}
+else:
+	${3:pass}
+$0
+endsnippet
+
+snippet ifee "If-Elif-Else" b
+if ${1:condition}:
+	${2:${VISUAL:pass}}
+elif ${3:condition}:
+	${4:pass}
+else:
+	${5:pass}
+$0
+endsnippet
+
+snippet pr "print()" 
+print(${1:stuff})$0
+endsnippet
+
+snippet prs "print(string)"
+print("${1:Imma String!}")$0
+endsnippet
+
+snippet /for([0-9]{1,100})/ "for loop with n iterations" r
+for ${1:i} in range(0,`!p snip.rv = int(match.group(1))`):
+	${2:${VISUAL:pass}}
+$0
+endsnippet
+
+snippet for "for loop" 
+for ${1:i} in ${2:Thing}:
+	${3:${VISUAL:pass}}
+$0
+endsnippet
+
+snippet wh "while" 
+while ${1:condition}:
+	${2:pass}
+$0
+endsnippet
+
+snippet fro "from <module> import <stuff>" b
+from ${1:module} import ${2:stuff}
+$0
+endsnippet
+
+snippet impa "import x as y" b
+import ${1:${VISUAL:module}} as ${2:$1}
+$0
+endsnippet
+
+snippet try "Try / Except" b
+try:
+	${1:${VISUAL:pass}}
+except ${2:Exception} as ${3:e}:
+	${4:raise $3}
+endsnippet
+
+snippet trye "Try / Except / Else" b
+try:
+	${1:${VISUAL:pass}}
+except ${2:Exception} as ${3:e}:
+	${4:raise $3}
+else:
+	${5:pass}
+endsnippet
+
+snippet tryf "Try / Except / Finally" b
+try:
+	${1:${VISUAL:pass}}
+except ${2:Exception} as ${3:e}:
+	${4:raise $3}
+finally:
+	${5:pass}
+endsnippet
+
+snippet tryef "Try / Except / Else / Finally" b
+try:
+	${1:${VISUAL:pass}}
+except${2: ${3:Exception} as ${4:e}}:
+	${5:raise}
+else:
+	${6:pass}
+finally:
+	${7:pass}
+endsnippet
+
