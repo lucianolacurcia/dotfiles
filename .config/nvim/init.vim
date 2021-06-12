@@ -27,6 +27,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" Plug 'w0rp/ale'	"Linting engine and lsp client
 		" let g:airline#extensions#ale#enabled = 1
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'preservim/nerdtree'
 
 	Plug 'puremourning/vimspector'
 	Plug 'tpope/vim-fugitive'
