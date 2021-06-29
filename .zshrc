@@ -112,3 +112,5 @@ function netlabs() {
 	cd /home/luciano/Documents/netlabs
 }
 export PATH=/home/luciano/.local/bin:$PATH
+export PATH="/home/luciano/scripts:$PATH"
+export CANAL_SLACK=C025BD8PBT8
