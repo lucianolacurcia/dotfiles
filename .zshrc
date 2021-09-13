@@ -113,4 +113,5 @@ function netlabs() {
 }
 export PATH=/home/luciano/.local/bin:$PATH
 export PATH="/home/luciano/scripts:$PATH"
+export PATH="/home/luciano/go/bin:$PATH"
 export CANAL_SLACK=C025BD8PBT8

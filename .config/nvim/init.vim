@@ -26,7 +26,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		cmap use UltiSnipsEdit
 	" Plug 'w0rp/ale'	"Linting engine and lsp client
 		" let g:airline#extensions#ale#enabled = 1
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'preservim/nerdtree'
 
 	Plug 'puremourning/vimspector'
@@ -38,17 +38,24 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'rust-lang/rust.vim'
 
+	"Go:
+	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+	"Java:
+	Plug 'neoclide/coc.nvim'
+
 	Plug 'plasticboy/vim-markdown'
-	" UML:
-	Plug 'aklt/plantuml-syntax'
-	Plug 'weirongxu/plantuml-previewer.vim'
-	Plug 'tyru/open-browser.vim'
+	"Python:
+	" Plug 'davidhalter/jedi-vim'
+	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
+
+
 	call plug#end()
 
 "basic stuff
 "line numbers and relative line numbers
 	set number
-	set relativenumber
 "automatic saving after every change
 	set autowriteall
 "read if file is changed externally
@@ -95,8 +102,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 "Plugin configuration
 	"nerdtree
 		nnoremap <leader>a :NERDTreeToggle<cr>
-	"coc.nvim
-		nmap <leader>rn <Plug>(coc-rename)
+
 
 "copying and pasting from system clipboard.
 	 vnoremap <C-c> "+y
@@ -195,6 +201,3 @@ set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
