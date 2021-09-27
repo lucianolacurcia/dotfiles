@@ -114,4 +114,69 @@ function netlabs() {
 export PATH=/home/luciano/.local/bin:$PATH
 export PATH="/home/luciano/scripts:$PATH"
 export PATH="/home/luciano/go/bin:$PATH"
-export CANAL_SLACK=C025BD8PBT8
+
+
+# Raspberry pi cluster functions
+# cluster management functions
+
+#   list what other nodes are in the cluster
+function pi-cluster-other-nodes {
+    grep "pi" /etc/hosts | awk '{print $2}' | grep -v $(hostname)
+}
+
+#   execute a command on all nodes in the cluster
+function pi-cluster-cmd {
+    for node in $(pi-cluster-other-nodes);
+    do
+        echo $node;
+        ssh -t $node "$@";
+    done
+}
+
+#   reboot all nodes in the cluster
+function pi-cluster-reboot {
+    pi-cluster-cmd sudo reboot now
+}
+
+#   shutdown all nodes in the cluster
+function pi- cluster-shutdown {
+    pi-cluster-cmd sudo shutdown now
+}
+
+function pi-cluster-scp {
+    for node in $(pi-cluster-other-nodes);
+    do
+        echo "${node} copying...";
+        cat $1 | ssh $node "sudo tee $1" > /dev/null 2>&1;
+    done
+    echo 'all files copied successfully'
+}
+
+#   start yarn and dfs on cluster
+function pi-cluster-start-hadoop {
+    start-dfs.sh; start-yarn.sh
+}
+
+#   stop yarn and dfs on cluster
+function pi-cluster-stop-hadoop {
+    stop-dfs.sh; stop-yarn.sh
+}
+
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export HADOOP_HOME=/opt/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+
+export SPARK_HOME=/opt/spark
+export PATH=$PATH:$SPARK_HOME/bin
+
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:$LD_LIBRARY_PATH
+
+
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
+export HIVE_HOME=/opt/hive
+export PATH=$PATH:/opt/hive/bin
+export DEVDATA=~/Documents/netlabs/spark-hadoop/training_materials/devsh/data
+export DEVSH=~/Documents/netlabs/spark-hadoop/training_materials/devsh
+export PYSPARK_PYTHON=/usr/bin/python2
