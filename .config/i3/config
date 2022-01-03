@@ -20,6 +20,9 @@ new_window 1pixel
 # get auth work with polkit-gnome:
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
+exec --no-startup-id volumeicon
+exec --no-startup-id nm-applet
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Noto Sans Regular
@@ -180,6 +183,23 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Set shut down, restart and locking features
+bindsym $mod+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 # Multimedia Keys:
 
 # volume
@@ -228,7 +248,8 @@ for_window [class="^.*"] border pixel 4
 # finds out, if available):
 bar {
 	   font pango:Noto Sans Regular 10, FontAwesome 10
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+	   i3bar_command i3bar
+    status_command i3status
     position bottom
     colors {
       separator          #666666

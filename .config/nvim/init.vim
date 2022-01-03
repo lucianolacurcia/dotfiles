@@ -1,3 +1,8 @@
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+	  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+	    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
 call plug#begin('~/.local/share/nvim/plugged')
 "Aesthetic stuff
 	"fancy statusline and themes
@@ -26,8 +31,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 		cmap use UltiSnipsEdit
 	" Plug 'w0rp/ale'	"Linting engine and lsp client
 		" let g:airline#extensions#ale#enabled = 1
-	" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'preservim/nerdtree'
+	Plug 'christoomey/vim-tmux-navigator'
 
 	Plug 'puremourning/vimspector'
 	Plug 'tpope/vim-fugitive'
@@ -46,8 +52,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	Plug 'plasticboy/vim-markdown'
 	"Python:
-	" Plug 'davidhalter/jedi-vim'
-	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 
 
@@ -80,6 +84,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	noremap Y y$			" consistency
 	set wildmenu
 	set wildmode=longest,list,full	" autocompletion
+	set clipboard=unnamedplus
 	"disable automatic commenting on newline
 	au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 	set splitbelow splitright	"splits open to the bottom and right"
@@ -104,9 +109,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 		nnoremap <leader>a :NERDTreeToggle<cr>
 
 
-"copying and pasting from system clipboard.
-	 vnoremap <C-c> "+y
-	 "nmap <C-w> "+P
 
 au BufWritePre * %s/\s\+$//e "delete trailing whitespace on write
 au BufWritePre * %s/\n\+\%$//e "delete newlines at the end of file on write
@@ -201,3 +203,4 @@ set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes
+set nrformats=alpha

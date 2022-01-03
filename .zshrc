@@ -23,14 +23,13 @@ ZSH_THEME="robbyrussell"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -45,8 +44,9 @@ ZSH_THEME="robbyrussell"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -99,84 +99,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-function proy() {
-	cd /mnt/windows/Users/luciano/Documents/proyectos
-}
-function fing() {
-	cd /mnt/windows/Users/luciano/Documents/fing
-}
-function grafo() {
-	nohup zathura /mnt/windows/Users/luciano/Documents/fing/GrafoPrevias_Feb2021.pdf
-}
-function netlabs() {
-	cd /home/luciano/Documents/netlabs
-}
-export PATH=/home/luciano/.local/bin:$PATH
-export PATH="/home/luciano/scripts:$PATH"
-export PATH="/home/luciano/go/bin:$PATH"
-
-
-# Raspberry pi cluster functions
-# cluster management functions
-
-#   list what other nodes are in the cluster
-function pi-cluster-other-nodes {
-    grep "pi" /etc/hosts | awk '{print $2}' | grep -v $(hostname)
-}
-
-#   execute a command on all nodes in the cluster
-function pi-cluster-cmd {
-    for node in $(pi-cluster-other-nodes);
-    do
-        echo $node;
-        ssh -t $node "$@";
-    done
-}
-
-#   reboot all nodes in the cluster
-function pi-cluster-reboot {
-    pi-cluster-cmd sudo reboot now
-}
-
-#   shutdown all nodes in the cluster
-function pi- cluster-shutdown {
-    pi-cluster-cmd sudo shutdown now
-}
-
-function pi-cluster-scp {
-    for node in $(pi-cluster-other-nodes);
-    do
-        echo "${node} copying...";
-        cat $1 | ssh $node "sudo tee $1" > /dev/null 2>&1;
-    done
-    echo 'all files copied successfully'
-}
-
-#   start yarn and dfs on cluster
-function pi-cluster-start-hadoop {
-    start-dfs.sh; start-yarn.sh
-}
-
-#   stop yarn and dfs on cluster
-function pi-cluster-stop-hadoop {
-    stop-dfs.sh; stop-yarn.sh
-}
-
-
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-export HADOOP_HOME=/opt/hadoop
-export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
-
-export SPARK_HOME=/opt/spark
-export PATH=$PATH:$SPARK_HOME/bin
-
-export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
-export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:$LD_LIBRARY_PATH
-
-
-export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
-export HIVE_HOME=/opt/hive
-export PATH=$PATH:/opt/hive/bin
-export DEVDATA=~/Documents/netlabs/spark-hadoop/training_materials/devsh/data
-export DEVSH=~/Documents/netlabs/spark-hadoop/training_materials/devsh
-export PYSPARK_PYTHON=/usr/bin/python2
