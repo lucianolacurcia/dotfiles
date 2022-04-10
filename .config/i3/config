@@ -99,7 +99,8 @@ exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart
 exec --no-startup-id picom -cC
 
 #set wallpaper:
-exec_always feh --randomize --bg-fill /home/luciano/Desktop/wallpapers
+# exec_always feh --randomize --bg-fill /home/luciano/Desktop/wallpapers
+exec_always wget -q -O /home/luciano/Documents/projects/unsplash_feh/image.jpg $(curl -X GET -H 'Authorization: Client-ID B-1tS3jqouDLylF2Zg5p9BUvp26GeoI23eghos8vp6Y' https://api.unsplash.com/photos/random\?orientation\=landscape\&query\=montevideo,moscow,kyiv,party,kiev,berlin,warsaw\&featured=true | tee /home/luciano/Documents/projects/unsplash_feh/image-info.json | jq -r .urls.full) && feh --bg-fill /home/luciano/Documents/projects/unsplash_feh/image.jpg
 
 # scratchpad terminal
 exec_always alacritty -t "scratchpad"

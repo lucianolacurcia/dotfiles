@@ -33,7 +33,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" let g:airline#extensions#ale#enabled = 1
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'preservim/nerdtree'
+	Plug 'mbbill/undotree'
 	Plug 'christoomey/vim-tmux-navigator'
+
+
+	Plug 'mattn/emmet-vim'
+	Plug 'neoclide/vim-jsx-improve'
+	Plug '/vim-jsx-improve'
+	Plug 'evanleck/vim-svelte'
 
 	Plug 'puremourning/vimspector'
 	Plug 'tpope/vim-fugitive'
@@ -204,3 +211,4 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 set nrformats=alpha
+nnoremap <F5> :UndotreeToggle<CR>
