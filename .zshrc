@@ -132,3 +132,4 @@ lfcd () {
 }
 
 export PATH=$PATH:/home/luciano/go/bin
+HISTTIMEFORMAT="%F %T "
