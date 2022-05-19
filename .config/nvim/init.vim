@@ -31,7 +31,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		cmap use UltiSnipsEdit
 	" Plug 'w0rp/ale'	"Linting engine and lsp client
 		" let g:airline#extensions#ale#enabled = 1
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 	Plug 'preservim/nerdtree'
 	Plug 'mbbill/undotree'
 	Plug 'christoomey/vim-tmux-navigator'
@@ -55,7 +55,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 	"Java:
-	Plug 'neoclide/coc.nvim'
 
 	Plug 'plasticboy/vim-markdown'
 	"Python:
