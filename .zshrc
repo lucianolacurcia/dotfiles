@@ -133,3 +133,5 @@ lfcd () {
 
 export PATH=$PATH:/home/luciano/go/bin
 HISTTIMEFORMAT="%F %T "
+alias ssh='TERM=xterm ssh'
+export PATH="$PATH:$HOME/go/bin"
