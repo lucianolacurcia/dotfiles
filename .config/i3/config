@@ -105,7 +105,7 @@ for_window [title="GenericMv3mUwGwg2E6SgymwDidYe2rBT73XFsxw"] move scratchpad
 for_window [title="GenericMv3mUwGwg2E6SgymwDidYe2rBT73XFsxw"] move position 50 200
 bindsym $mod+t [title="^Generic"] scratchpad show
 
-exec_always alacritty -t "DiaryMv3mUwGwg2E6SgymwDidYe2rBT73XFsxw" -e nvim ~/Documents/netlabs/journal
+exec_always alacritty -t "DiaryMv3mUwGwg2E6SgymwDidYe2rBT73XFsxw" -e nvim -c "autocmd TextChanged,TextChangedI <buffer> silent write" ~/Documents/netlabs/journal
 for_window [title="DiaryMv3mUwGwg2E6SgymwDidYe2rBT73XFsxw"] move scratchpad
 for_window [title="DiaryMv3mUwGwg2E6SgymwDidYe2rBT73XFsxw"] move position 1000 200
 bindsym $mod+y [title="^Diary"] scratchpad show

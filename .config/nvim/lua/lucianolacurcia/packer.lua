@@ -1,9 +1,10 @@
-print("hjellopacker")
 vim.cmd.packadd('packer.nvim')
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+
+  use 'fatih/vim-go'
 
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -27,6 +28,9 @@ return require('packer').startup(function(use)
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
 
+  -- plugin for integrate tmux with nvim
+  use('christoomey/vim-tmux-navigator')
+
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  requires = {
@@ -49,7 +53,7 @@ return require('packer').startup(function(use)
 	  }
   }
 
-  use("github/copilot.vim")
+  -- use("github/copilot.vim")
 
 end)
 
