@@ -249,8 +249,8 @@ for_window [class="^.*"] border pixel 4
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available):
 bar {
-	   font pango:Noto Sans Regular 10, FontAwesome 10
-	   i3bar_command i3bar
+	font pango:Noto Sans Regular 10, FontAwesome 10
+	i3bar_command i3bar
     status_command i3status
     position bottom
     colors {
