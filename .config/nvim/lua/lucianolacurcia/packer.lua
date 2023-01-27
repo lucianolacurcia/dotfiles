@@ -53,6 +53,15 @@ return require('packer').startup(function(use)
 	  }
   }
 
+  use {
+      "cuducos/yaml.nvim",
+      ft = {"yaml"}, -- optional
+      requires = {
+          "nvim-treesitter/nvim-treesitter",
+          "nvim-telescope/telescope.nvim" -- optional
+      },
+  }
+
   -- use("github/copilot.vim")
 
 end)
