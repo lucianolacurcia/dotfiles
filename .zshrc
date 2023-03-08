@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/luciano/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -23,7 +23,7 @@ ZSH_THEME="robbyrussell"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following lines to change the auto-update behavior
+# Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 # zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
@@ -99,39 +99,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export VISUAL=nvim;
-export EDITOR=nvim;
-# Change working dir in shell to last dir in lf on exit (adapted from ranger).
-#
-# You need to either copy the content of this file to your shell rc file
-# (e.g. ~/.bashrc) or source this file directly:
-#
-#     LFCD="/path/to/lfcd.sh"
-#     if [ -f "$LFCD" ]; then
-#         source "$LFCD"
-#     fi
-#
-# You may also like to assign a key to this command:
-#
-#     bind '"\C-o":"lfcd\C-m"'  # bash
-#     bindkey -s '^o' 'lfcd\n'  # zsh
-#
 
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        if [ -d "$dir" ]; then
-            if [ "$dir" != "$(pwd)" ]; then
-                cd "$dir"
-            fi
-        fi
-    fi
-}
-
-export PATH=$PATH:/home/luciano/go/bin
-HISTTIMEFORMAT="%F %T "
-alias ssh='TERM=xterm ssh'
-export PATH="$PATH:$HOME/go/bin"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
