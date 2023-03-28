@@ -34,6 +34,15 @@ lsp.set_preferences({
     -- end)
 
     local cmp = require('cmp')
+    cmp.setup {
+        sources = {
+            { name = "nvim_lsp" },
+            { name = 'nvim_lsp_signature_help' }
+        }
+    }
+
+
+
     local cmp_select = {behavior = cmp.SelectBehavior.Select}
     local cmp_mappings = lsp.defaults.cmp_mappings({
         ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
@@ -46,7 +55,6 @@ lsp.set_preferences({
     -- this helps with copilot setup
     cmp_mappings['<Tab>'] = nil
     cmp_mappings['<S-Tab>'] = nil
-
 
 
 
