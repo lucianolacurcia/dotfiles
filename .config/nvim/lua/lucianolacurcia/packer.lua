@@ -29,6 +29,12 @@ return require('packer').startup(function(use)
     use("sainnhe/gruvbox-material")
 
     use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional
+        },
+    }
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
