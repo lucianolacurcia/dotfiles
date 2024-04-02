@@ -111,6 +111,18 @@ export GOPRIVATE=github.com/mercadolibre/*,github.com/melisource/*
 export GONOSUMDB=github.com/mercadolibre/*,github.com/melisource/*
 export GOPROXY=https://go.artifacts.furycloud.io/
 export GONOPROXY=https://go.artifacts.furycloud.io/
+
+# Created by `pipx` on 2024-03-20 19:23:27
+export PATH="$PATH:/Users/llacurcia/.local/bin"
+
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 export RANGER_FURY_LOCATION=/Users/llacurcia/.fury #Added by Fury CLI
 export RANGER_FURY_VENV_LOCATION=/Users/llacurcia/.fury/fury_venv #Added by Fury CLI
 
@@ -118,10 +130,4 @@ export RANGER_FURY_VENV_LOCATION=/Users/llacurcia/.fury/fury_venv #Added by Fury
 declare FURY_BIN_LOCATION="/Users/llacurcia/.fury/fury_venv/bin" # Added by Fury CLI installation process
 export PATH="$PATH:$FURY_BIN_LOCATION" # Added by Fury CLI installation process
 # Added by Fury CLI installation process
-
-# Created by `pipx` on 2024-03-20 19:23:27
-export PATH="$PATH:/Users/llacurcia/.local/bin"
-
- eval "$(pyenv init -)"
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH="/Users/llacurcia/go/bin:$PATH"
