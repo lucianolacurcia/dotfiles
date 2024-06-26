@@ -50,6 +50,8 @@ vim.call('plug#end')
 
 vim.cmd.colorscheme("rose-pine")
 
+vim.keymap.set('v', '<leader>a', vim.lsp.buf.code_action, {})
+
 
 -- telescope
 local builtin = require('telescope.builtin')
@@ -227,7 +229,7 @@ cmp.setup {
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-        ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),  -- Down
         -- C-b (back) C-f (forward) for snippet placeholder navigation.
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm {
