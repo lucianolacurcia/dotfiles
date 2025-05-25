@@ -133,5 +133,12 @@ lfcd () {
 
 export PATH=$PATH:/home/luciano/go/bin
 HISTTIMEFORMAT="%F %T "
-alias ssh='TERM=xterm ssh'
 export PATH="$PATH:$HOME/go/bin"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+
+# Created by `pipx` on 2025-04-23 03:03:21
+export PATH="$PATH:/home/luciano/.local/bin"
